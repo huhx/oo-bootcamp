@@ -14,7 +14,7 @@ public class StringProcessor {
     this.printer = printer;
   }
 
-  public void output(String input) {
-    printer.print(converter.convert(input));
+  public String output(String input) {
+    return printer.print(converter.convert(input));
   }
 }

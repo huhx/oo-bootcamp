@@ -10,6 +10,6 @@ public class Client {
   public static void main(String[] args) {
     Converter converter = new DefaultDateConverter();
     Printer printer = new ConsolePrinter();
-    new StringProcessor(converter, printer).output("2099-09-09");
+    System.out.println(new StringProcessor(converter, printer).output("2099-09-09"));
   }
 }

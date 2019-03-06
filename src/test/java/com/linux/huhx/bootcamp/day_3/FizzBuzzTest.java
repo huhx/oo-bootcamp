@@ -19,4 +19,9 @@ public class FizzBuzzTest {
     assertEquals("Buzz", new FizzBuzz().convert(5));
   }
 
+  @Test
+  public void should_return_fizzbuzz_when_convert_given_number_15() {
+    assertEquals("FizzBuzz", new FizzBuzz().convert(15));
+  }
+
 }
