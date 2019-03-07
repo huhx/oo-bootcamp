@@ -18,4 +18,15 @@ public class ParkingLotsTest {
 
     Assert.assertNull(ticket);
   }
+
+  @Test
+  public void should_pick_up_success_when_customer_pick_up_car_given_valid_ticket() {
+    ParkingLots parkingLots = new ParkingLots();
+    Car car = new Car();
+    parkingLots.parkCar(car);
+
+    Car actual = parkingLots.pickUpCar("ticket");
+
+    Assert.assertEquals(car, actual);
+  }
 }

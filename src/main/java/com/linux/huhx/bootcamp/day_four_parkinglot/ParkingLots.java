@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public class ParkingLots {
 
-  public static final int DEFAULT_CAPACITY = 1 >> 4;
+  public static final int DEFAULT_CAPACITY = 16;
 
   public ParkingLots() {
     this.size = DEFAULT_CAPACITY;
@@ -30,5 +30,9 @@ public class ParkingLots {
     }
     spaces.put("ticket", car);
     return "ticket";
+  }
+
+  public Car pickUpCar(String ticket) {
+    return spaces.get(ticket);
   }
 }
