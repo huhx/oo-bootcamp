@@ -29,4 +29,14 @@ public class ParkingLotsTest {
 
     Assert.assertEquals(car, actual);
   }
+
+  @Test
+  public void should_pick_up_fail_when_customer_pick_up_car_given_invalid_ticket() {
+    ParkingLots parkingLots = new ParkingLots();
+    parkingLots.parkCar(new Car());
+
+    Car actual = parkingLots.pickUpCar("invalid");
+
+    Assert.assertNull(actual);
+  }
 }
