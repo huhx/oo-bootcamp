@@ -1,4 +1,4 @@
-package com.linux.huhx.bootcamp.day_3;
+package com.linux.huhx.bootcamp.day_three_fizzbuzz;
 
 import org.junit.Test;
 

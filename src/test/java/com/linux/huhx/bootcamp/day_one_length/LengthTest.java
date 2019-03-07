@@ -1,4 +1,4 @@
-package com.linux.huhx.bootcamp.day_one;
+package com.linux.huhx.bootcamp.day_one_length;
 
 import org.junit.Assert;
 import org.junit.Test;
