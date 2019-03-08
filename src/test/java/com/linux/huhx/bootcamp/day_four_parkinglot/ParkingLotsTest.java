@@ -15,13 +15,14 @@ public class ParkingLotsTest {
 
   @Test
   public void should_return_ticket_when_parking_lots_has_space_give_cars_coming() {
-    String ticket = new ParkingLots(1).parkCar(car);
+    ParkingLots parkingLots = new ParkingLots(1);
+    String ticket = parkingLots.parkCar(car);
 
     Assert.assertNotNull(ticket);
   }
 
   @Test
-  public void should_return_ticket_when_parking_lots_has_no_space_give_cars_coming() {
+  public void should_return_ticket_when_parking_lots_has_no_space_given_cars_coming() {
     String ticket = new ParkingLots(0).parkCar(car);
 
     Assert.assertNull(ticket);

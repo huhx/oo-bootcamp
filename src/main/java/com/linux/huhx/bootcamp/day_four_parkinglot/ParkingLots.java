@@ -8,19 +8,15 @@ import lombok.Getter;
 public class ParkingLots {
 
   public static final int DEFAULT_CAPACITY = 16;
-  private int size;
+  private int capacity;
   private Map<String, Car> spaces = new HashMap<>();
 
   public ParkingLots() {
-    this.size = DEFAULT_CAPACITY;
+    this.capacity = DEFAULT_CAPACITY;
   }
 
-  public ParkingLots(int size) {
-    this.size = size;
-  }
-
-  public boolean hasSpace() {
-    return spaces.size() < size;
+  public ParkingLots(int capacity) {
+    this.capacity = capacity;
   }
 
   public String parkCar(Car car) {
@@ -33,6 +29,10 @@ public class ParkingLots {
   }
 
   public Car pickUpCar(String ticket) {
-    return spaces.get(ticket);
+    return spaces.remove(ticket);
+  }
+
+  private boolean hasSpace() {
+    return spaces.size() < capacity;
   }
 }
