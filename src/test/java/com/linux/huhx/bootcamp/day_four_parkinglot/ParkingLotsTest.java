@@ -30,7 +30,7 @@ public class ParkingLotsTest {
 
   @Test
   public void should_pick_up_success_when_customer_pick_up_car_given_valid_ticket() {
-    ParkingLots parkingLots = new ParkingLots();
+    ParkingLots parkingLots = new ParkingLots(16);
     String ticket = parkingLots.parkCar(car);
 
     Car actual = parkingLots.pickUpCar(ticket);
@@ -40,7 +40,7 @@ public class ParkingLotsTest {
 
   @Test
   public void should_pick_up_fail_when_customer_pick_up_car_given_invalid_ticket() {
-    ParkingLots parkingLots = new ParkingLots();
+    ParkingLots parkingLots = new ParkingLots(16);
     parkingLots.parkCar(car);
 
     Car actual = parkingLots.pickUpCar("invalid ticket");
@@ -50,7 +50,7 @@ public class ParkingLotsTest {
 
   @Test
   public void should_pick_up_correct_card_when_multiple_customer_pick_up_car_given_invalid_tickets() {
-    ParkingLots parkingLots = new ParkingLots();
+    ParkingLots parkingLots = new ParkingLots(16);
     Car redCar = car;
     Car whiteCar = new Car("甲A026", "222", "white");
     String redCarTicket = parkingLots.parkCar(redCar);

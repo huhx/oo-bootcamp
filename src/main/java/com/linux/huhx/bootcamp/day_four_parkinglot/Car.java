@@ -8,7 +8,8 @@ import lombok.Data;
 public class Car {
 
   private String plate;
-  private String owner;
-  private String color;
 
+  private String owner;
+
+  private String color;
 }

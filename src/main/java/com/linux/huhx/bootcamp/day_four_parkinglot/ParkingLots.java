@@ -7,13 +7,8 @@ import lombok.Getter;
 @Getter
 public class ParkingLots {
 
-  public static final int DEFAULT_CAPACITY = 16;
   private int capacity;
   private Map<String, Car> parkingMap = new HashMap<>();
-
-  public ParkingLots() {
-    this.capacity = DEFAULT_CAPACITY;
-  }
 
   public ParkingLots(int capacity) {
     this.capacity = capacity;
