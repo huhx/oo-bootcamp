@@ -5,7 +5,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Car {
+public class Ticket {
 
-  private String plate;
+  private String parkingLotNumber;
+
+  private String ticketNumber;
 }
