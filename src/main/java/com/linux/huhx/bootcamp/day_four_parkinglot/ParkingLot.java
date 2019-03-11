@@ -34,12 +34,12 @@ public class ParkingLot {
     return car;
   }
 
-  public boolean hasSpace() {
-    return carList.size() < capacity;
-  }
-
   public int getRemainSpace() {
     return capacity - carList.size();
+  }
+
+  public boolean hasSpace() {
+    return getRemainSpace() > 0;
   }
 
   public double getRemainSpaceRate() {
