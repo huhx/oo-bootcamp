@@ -43,6 +43,6 @@ public class ParkingLot {
   }
 
   public double getRemainSpaceRate() {
-    return getRemainSpace() / capacity;
+    return getRemainSpace() / (double) capacity;
   }
 }
