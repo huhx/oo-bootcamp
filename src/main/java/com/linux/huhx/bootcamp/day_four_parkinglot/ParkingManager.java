@@ -8,53 +8,27 @@ import java.util.Objects;
 
 public class ParkingManager {
 
-  private List<ParkingBoy> parkingBoys;
+  private List<ParkAble> parkAbles;
 
-  private List<ParkingLot> parkingLots;
-
-  public ParkingManager(List<ParkingBoy> parkingBoys, List<ParkingLot> parkingLots) {
-    this.parkingBoys = parkingBoys;
-    this.parkingLots = parkingLots;
+  public ParkingManager(List<ParkAble> parkAbles) {
+    this.parkAbles = parkAbles;
   }
 
   public Ticket parkCar(Car car) {
-    ParkingBoy parkingBoy = parkingBoys.stream()
+    ParkAble parkable = parkAbles.stream()
         .filter(item -> item.existRemainParkingLot())
-        .findAny().orElse(null);
-    if (Objects.nonNull(parkingBoy)) {
-      return parkingBoy.parkCar(car);
-    }
-    if (existRemainParkingLot()) {
-      return parkingLots.stream().filter(parkingLot -> parkingLot.hasSpace()).findAny().get().parkCar(car);
-    }
-    throw new NoAvailableSpaceException();
+        .findAny().orElseThrow(NoAvailableSpaceException::new);
+    return parkable.parkCar(car);
   }
-
-  public boolean existRemainParkingLot() {
-    return parkingLots.stream().filter(parkingLot -> parkingLot.hasSpace()).count() > 0;
-  }
-
 
   public Car pickupCar(Ticket ticket) {
     if (Objects.isNull(ticket)) {
       throw new NoTicketException();
     }
-    ParkingLot parkingLot = parkingLots.stream().filter(item -> item.getLotNumber().equals(ticket.getParkingLotNumber())).findAny().orElse(null);
-    if (Objects.nonNull(parkingLot)) {
-      return parkingLot.pickUpCar(ticket);
-    }
-
-    ParkingBoy parkingBoy = parkingBoys.stream()
-        .filter(item -> getParkingLot(item, ticket))
+    ParkAble parkAble = parkAbles.stream()
+        .filter(item -> item.isPark(ticket))
         .findAny()
         .orElseThrow(InvalidTicketException::new);
-
-    return parkingBoy.pickupCar(ticket);
-  }
-
-  private boolean getParkingLot(ParkingBoy parkingBoy, Ticket ticket) {
-    return parkingBoy.parkingLots.stream()
-        .filter(parkingLot -> parkingLot.getLotNumber().equals(ticket.getParkingLotNumber()))
-        .count() > 0;
+    return parkAble.pickupCar(ticket);
   }
 }

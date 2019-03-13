@@ -37,7 +37,7 @@ public class ParkingLotTest {
     ParkingLot parkingLot = new ParkingLot(16, "number");
     Ticket ticket = parkingLot.parkCar(car);
 
-    Car actual = parkingLot.pickUpCar(ticket);
+    Car actual = parkingLot.pickupCar(ticket);
 
     assertEquals(car, actual);
   }
@@ -48,7 +48,7 @@ public class ParkingLotTest {
     parkingLot.parkCar(car);
 
     assertThrows(InvalidTicketException.class,
-        () -> parkingLot.pickUpCar(new Ticket("number", "invalid")));
+        () -> parkingLot.pickupCar(new Ticket("number", "invalid")));
   }
 
   @Test
@@ -59,8 +59,8 @@ public class ParkingLotTest {
     Ticket redCarTicket = parkingLot.parkCar(redCar);
     Ticket whiteCarTicket = parkingLot.parkCar(whiteCar);
 
-    Car redActual = parkingLot.pickUpCar(redCarTicket);
-    Car whiteActual = parkingLot.pickUpCar(whiteCarTicket);
+    Car redActual = parkingLot.pickupCar(redCarTicket);
+    Car whiteActual = parkingLot.pickupCar(whiteCarTicket);
 
     assertEquals(redCar, redActual);
     assertEquals(whiteCar, whiteActual);

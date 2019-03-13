@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Getter;
 
 @Getter
-public class ParkingLot {
+public class ParkingLot implements ParkAble {
 
   private String lotNumber;
   private int capacity;
@@ -17,6 +17,7 @@ public class ParkingLot {
     this.lotNumber = lotNumber;
   }
 
+  @Override
   public Ticket parkCar(Car car) {
     if (!hasSpace()) {
       return null;
@@ -26,12 +27,23 @@ public class ParkingLot {
     return ticket;
   }
 
-  public Car pickUpCar(Ticket ticket) {
+  @Override
+  public Car pickupCar(Ticket ticket) {
     Car car = carList.stream()
         .filter(item -> item.getPlate().equals(ticket.getTicketNumber()))
         .findAny().orElseThrow(InvalidTicketException::new);
     carList.remove(car);
     return car;
+  }
+
+  @Override
+  public boolean existRemainParkingLot() {
+    return hasSpace();
+  }
+
+  @Override
+  public boolean isPark(Ticket ticket) {
+    return lotNumber.equals(ticket.getParkingLotNumber());
   }
 
   public int getRemainSpace() {
