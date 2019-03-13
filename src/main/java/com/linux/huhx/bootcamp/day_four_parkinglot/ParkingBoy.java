@@ -25,4 +25,8 @@ public abstract class ParkingBoy {
   protected List<ParkingLot> parkingLots;
 
   public abstract Ticket parkCar(Car car);
+
+  public boolean existRemainParkingLot() {
+    return parkingLots.stream().filter(parkingLot -> parkingLot.hasSpace()).count() > 0;
+  }
 }

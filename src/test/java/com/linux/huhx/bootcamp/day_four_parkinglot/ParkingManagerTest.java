@@ -1,11 +1,14 @@
 package com.linux.huhx.bootcamp.day_four_parkinglot;
 
-import java.util.ArrayList;
+import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoAvailableSpaceException;
+import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParkingManagerTest {
 
@@ -21,7 +24,7 @@ class ParkingManagerTest {
     SmartParkingBoy smartParkingBoy = new SmartParkingBoy(asList(
         new ParkingLot(4, "b"),
         new ParkingLot(5, "a")));
-    ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy));
+    ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy), emptyList());
 
     Ticket ticket = parkingManager.parkCar(car);
 
@@ -30,10 +33,19 @@ class ParkingManagerTest {
 
   @Test
   public void should_return_ticket_when_parking_given_parking_manager_have_no_parking_boys_and_have_available_lot() {
-    ParkingManager parkingManager = new ParkingManager(new ArrayList<>());
+    ParkingManager parkingManager = new ParkingManager(emptyList(), Arrays.asList(new ParkingLot(4, "b")));
 
     Ticket ticket = parkingManager.parkCar(car);
 
     assertNotNull(ticket);
+  }
+
+  @Test
+  public void should_throw_no_available_exception_when_parking_given_parking_manager_have_parking_boys_and_have_no_available_lot() {
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(asList(new ParkingLot(1, "b")));
+    smartParkingBoy.parkCar(new Car("car"));
+    ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy), emptyList());
+
+    assertThrows(NoAvailableSpaceException.class, () -> parkingManager.parkCar(car));
   }
 }
