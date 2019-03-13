@@ -71,7 +71,6 @@ class SmartParkingBoyTest {
     assertThrows(InvalidTicketException.class, () -> smartParkingBoy.pickupCar(new Ticket("123", "123")));
   }
 
-
   @Test
   public void should_throw_no_ticket_exception_when_customer_pick_up_car_given_no_ticket() {
     smartParkingBoy.parkCar(car);
