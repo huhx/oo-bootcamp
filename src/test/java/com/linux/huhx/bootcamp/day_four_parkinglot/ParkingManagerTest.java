@@ -68,4 +68,14 @@ class ParkingManagerTest {
 
     assertThrows(InvalidTicketException.class, () -> parkingManager.pickupCar(new Ticket("3", "5")));
   }
+
+  @Test
+  public void should_throw_invalid_ticket_exception_when_pick_up_car_given_use_valid_ticket_to_pick_up_twice() {
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(asList(new ParkingLot(1, "b")));
+    ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy), emptyList());
+    Ticket ticket = parkingManager.parkCar(car);
+    parkingManager.pickupCar(ticket);
+
+    assertThrows(InvalidTicketException.class, () -> parkingManager.pickupCar(ticket));
+  }
 }
