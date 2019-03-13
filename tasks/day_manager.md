@@ -29,6 +29,12 @@ then:  manager cant't help you to pick up the car and throw InvalidTicketExcepti
 ```
 
 ```
+given: customer has a valid ticket
+when:  when the manager pick up a car twice
+then:  the second time throw InvalidTicketException
+```
+
+```
 given: customer has no ticket
 when:  when manager pick up a car
 then:  manager cant't help you to pick up the car and throw NoTicketException
