@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -47,5 +48,14 @@ class ParkingManagerTest {
     ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy), emptyList());
 
     assertThrows(NoAvailableSpaceException.class, () -> parkingManager.parkCar(car));
+  }
+
+  @Test
+  public void should_return_car_when_pick_up_car_given_valid_ticket() {
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(asList(new ParkingLot(1, "b")));
+    ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy), emptyList());
+    Ticket ticket = parkingManager.parkCar(car);
+
+    assertEquals(car, parkingManager.pickupCar(ticket));
   }
 }

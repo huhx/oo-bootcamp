@@ -33,4 +33,7 @@ public class ParkingManager {
   }
 
 
+  public Car pickupCar(Ticket ticket) {
+    return new Car(ticket.getTicketNumber());
+  }
 }
