@@ -1,5 +1,6 @@
 package com.linux.huhx.bootcamp.day_four_parkinglot;
 
+import com.linux.huhx.bootcamp.day_four_parkinglot.exception.InvalidTicketException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoAvailableSpaceException;
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +35,22 @@ public class ParkingManager {
 
 
   public Car pickupCar(Ticket ticket) {
-    return new Car(ticket.getTicketNumber());
+    ParkingLot parkingLot = parkingLots.stream().filter(item -> item.getLotNumber().equals(ticket.getParkingLotNumber())).findAny().orElse(null);
+    if (Objects.nonNull(parkingLot)) {
+      return parkingLot.pickUpCar(ticket);
+    }
+
+    ParkingBoy parkingBoy = parkingBoys.stream()
+        .filter(item -> getParkingLot(item, ticket))
+        .findAny()
+        .orElseThrow(InvalidTicketException::new);
+
+    return parkingBoy.pickupCar(ticket);
+  }
+
+  private boolean getParkingLot(ParkingBoy parkingBoy, Ticket ticket) {
+    return parkingBoy.parkingLots.stream()
+        .filter(parkingLot -> parkingLot.getLotNumber().equals(ticket.getParkingLotNumber()))
+        .count() > 0;
   }
 }

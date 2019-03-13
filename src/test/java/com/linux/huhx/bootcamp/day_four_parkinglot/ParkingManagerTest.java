@@ -1,5 +1,6 @@
 package com.linux.huhx.bootcamp.day_four_parkinglot;
 
+import com.linux.huhx.bootcamp.day_four_parkinglot.exception.InvalidTicketException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoAvailableSpaceException;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,5 +58,14 @@ class ParkingManagerTest {
     Ticket ticket = parkingManager.parkCar(car);
 
     assertEquals(car, parkingManager.pickupCar(ticket));
+  }
+
+  @Test
+  public void should_throw_invalid_ticket_exception_when_pick_up_car_given_invalid_ticket() {
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(asList(new ParkingLot(1, "b")));
+    ParkingManager parkingManager = new ParkingManager(asList(smartParkingBoy), emptyList());
+    parkingManager.parkCar(car);
+
+    assertThrows(InvalidTicketException.class, () -> parkingManager.pickupCar(new Ticket("3", "5")));
   }
 }
