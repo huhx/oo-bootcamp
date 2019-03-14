@@ -4,12 +4,12 @@ import com.linux.huhx.bootcamp.day_four_parkinglot.exception.InvalidTicketExcept
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoTicketException;
 import java.util.List;
 import java.util.Objects;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public abstract class ParkingBoy implements ParkAble {
 
-  public ParkingBoy(List<ParkingLot> parkingLots) {
-    this.parkingLots = parkingLots;
-  }
+  protected List<ParkingLot> parkingLots;
 
   @Override
   public Car pickupCar(Ticket ticket) {
@@ -17,20 +17,19 @@ public abstract class ParkingBoy implements ParkAble {
       throw new NoTicketException();
     }
     ParkingLot parkingLot = parkingLots.stream()
-        .filter(item -> item.getLotNumber().equals(ticket.getParkingLotNumber()))
+        .filter(item -> item.getLotNumber().equals(ticket.getLotNumber()))
         .findAny()
         .orElseThrow(InvalidTicketException::new);
     return parkingLot.pickupCar(ticket);
   }
 
-  protected List<ParkingLot> parkingLots;
-
-  public boolean existRemainParkingLot() {
-    return parkingLots.stream().filter(parkingLot -> parkingLot.hasSpace()).count() > 0;
+  public boolean hasSpace() {
+    return parkingLots.stream().anyMatch(parkingLot -> parkingLot.hasSpace());
   }
 
   @Override
-  public boolean isPark(Ticket ticket) {
-    return parkingLots.stream().anyMatch(parkingLot -> parkingLot.getLotNumber().equals(ticket.getParkingLotNumber()));
+  public boolean hasCarParked(Ticket ticket) {
+    return parkingLots.stream()
+        .anyMatch(parkingLot -> parkingLot.getLotNumber().equals(ticket.getLotNumber()));
   }
 }

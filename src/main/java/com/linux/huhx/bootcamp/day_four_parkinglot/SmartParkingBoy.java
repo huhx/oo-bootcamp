@@ -18,5 +18,4 @@ public class SmartParkingBoy extends ParkingBoy {
         .orElseThrow(NoAvailableSpaceException::new);
     return parkingLot.parkCar(car);
   }
-
 }

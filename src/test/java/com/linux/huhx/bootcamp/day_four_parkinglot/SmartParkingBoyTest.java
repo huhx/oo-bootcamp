@@ -30,7 +30,7 @@ class SmartParkingBoyTest {
     Ticket ticket = smartParkingBoy.parkCar(car);
 
     assertNotNull(ticket);
-    assertEquals("a", ticket.getParkingLotNumber());
+    assertEquals("a", ticket.getLotNumber());
   }
 
   @Test
@@ -42,7 +42,7 @@ class SmartParkingBoyTest {
     Ticket ticket = smartParkingBoy.parkCar(car);
 
     assertNotNull(ticket);
-    assertEquals("b", ticket.getParkingLotNumber());
+    assertEquals("b", ticket.getLotNumber());
   }
 
   @Test

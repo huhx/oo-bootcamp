@@ -37,21 +37,17 @@ public class ParkingLot implements ParkAble {
   }
 
   @Override
-  public boolean existRemainParkingLot() {
-    return hasSpace();
+  public boolean hasSpace() {
+    return getRemainSpace() > 0;
   }
 
   @Override
-  public boolean isPark(Ticket ticket) {
-    return lotNumber.equals(ticket.getParkingLotNumber());
+  public boolean hasCarParked(Ticket ticket) {
+    return lotNumber.equals(ticket.getLotNumber());
   }
 
   public int getRemainSpace() {
     return capacity - carList.size();
-  }
-
-  public boolean hasSpace() {
-    return getRemainSpace() > 0;
   }
 
   public double getRemainSpaceRate() {

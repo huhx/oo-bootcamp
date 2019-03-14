@@ -6,7 +6,7 @@ public interface ParkAble {
 
   Car pickupCar(Ticket ticket);
 
-  boolean existRemainParkingLot();
+  boolean hasSpace();
 
-  boolean isPark(Ticket ticket);
+  boolean hasCarParked(Ticket ticket);
 }

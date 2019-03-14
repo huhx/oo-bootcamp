@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Ticket {
 
-  private String parkingLotNumber;
+  private String lotNumber;
 
   private String ticketNumber;
 }
