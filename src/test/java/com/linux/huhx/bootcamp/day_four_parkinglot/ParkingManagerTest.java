@@ -3,12 +3,13 @@ package com.linux.huhx.bootcamp.day_four_parkinglot;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.InvalidTicketException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoAvailableSpaceException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoTicketException;
+import com.linux.huhx.bootcamp.day_four_parkinglot.parkingboy.ParkingManager;
+import com.linux.huhx.bootcamp.day_four_parkinglot.parkingboy.SmartParkingBoy;
 import java.util.Arrays;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;

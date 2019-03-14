@@ -3,7 +3,8 @@ package com.linux.huhx.bootcamp.day_four_parkinglot;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.InvalidTicketException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoAvailableSpaceException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoTicketException;
-import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NormalParkingBoy;
+import com.linux.huhx.bootcamp.day_four_parkinglot.parkingboy.NormalParkingBoy;
+import com.linux.huhx.bootcamp.day_four_parkinglot.parkingboy.ParkingBoy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

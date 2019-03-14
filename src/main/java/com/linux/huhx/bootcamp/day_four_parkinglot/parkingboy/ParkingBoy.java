@@ -1,5 +1,9 @@
-package com.linux.huhx.bootcamp.day_four_parkinglot;
+package com.linux.huhx.bootcamp.day_four_parkinglot.parkingboy;
 
+import com.linux.huhx.bootcamp.day_four_parkinglot.Car;
+import com.linux.huhx.bootcamp.day_four_parkinglot.ParkAble;
+import com.linux.huhx.bootcamp.day_four_parkinglot.ParkingLot;
+import com.linux.huhx.bootcamp.day_four_parkinglot.Ticket;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.InvalidTicketException;
 import com.linux.huhx.bootcamp.day_four_parkinglot.exception.NoTicketException;
 import java.util.List;
