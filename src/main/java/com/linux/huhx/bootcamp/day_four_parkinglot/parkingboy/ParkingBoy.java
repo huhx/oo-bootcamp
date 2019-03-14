@@ -27,6 +27,7 @@ public abstract class ParkingBoy implements ParkAble {
     return parkingLot.pickupCar(ticket);
   }
 
+  @Override
   public boolean hasSpace() {
     return parkingLots.stream().anyMatch(parkingLot -> parkingLot.hasSpace());
   }
